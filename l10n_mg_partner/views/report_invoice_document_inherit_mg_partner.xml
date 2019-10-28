@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <!-- Inherit quotation report (from module sale) -->
+        <template id = "report_quotation_inherit_renala" inherit_id = "account.report_invoice_document">
+            <xpath expr="//div[@name = 'invoice_address']//span" position = "replace">
+                    <span t-if = "o.partner_id.partner_origin == 'locale'">NIF<span t-field="o.partner_id.nif"/></span><br/>
+                    <span t-if = "o.partner_id.partner_origin == 'locale'">STAT<span t-field="o.partner_id.nstat"/></span><br/>
+                    <span t-if = "o.partner_id.partner_origin == 'locale'">RCS<span t-field="o.partner_id.rcs"/></span><br/>
+                    <span t-if="o.partner_id.partner_origin == 'etrangere'">N° TVA<span t-field="o.partner_id.ntva"/></span><br/>
+                    <span t-if="o.partner_id.partner_origin == 'etrangere'">SIRET<span t-field="o.partner_id.siret"/></span><br/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

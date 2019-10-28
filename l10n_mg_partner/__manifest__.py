@@ -19,12 +19,16 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','account','sale','account_accountant'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/res_partner_views.xml',
+        'views/report_invoice_document_inherit_mg_partner.xml',
+        'views/base_view_company_form_inherit_mg_partner.xml',
+        'views/account_invoice_form_inherit_mg_partner.xml',
+        'views/sale_view_order_form_inherit_mg_partner.xml',
     ],
     'demo': [],
     'auto_install': False,

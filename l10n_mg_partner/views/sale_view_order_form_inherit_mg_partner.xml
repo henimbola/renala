@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+		<record id="sale_view_order_form_inherit_mg_partner" model="ir.ui.view">
+			<field name="name">sale.view_order_form.inherit_mg_partner</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+		        <xpath expr="//group/field[@name='payment_term_id']" position="after">
+						<field name="payment_method"  string="Methode de paiement" widget="selection"/>
+ 				</xpath>
+			</field>
+		</record>
+  	</data>
+</openerp>
+	
