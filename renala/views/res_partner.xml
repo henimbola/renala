@@ -6,8 +6,8 @@
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="base.view_partner_form"/>
       <field name="arch" type="xml">
-        <xpath expr="/form/sheet/group/group/field[@name='lang']" position="after">
-          <!--A remplacer par n°TVA et SIRET-->  
+        <xpath expr="//field[@name='lang']" position="after">
+          
           <field name = "ntva" attrs="{'invisible':[('partner_origin','=','locale')]}"/>
           <field name = "siret" attrs="{'invisible':[('partner_origin','=','locale')]}"/>
         </xpath>

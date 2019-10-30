@@ -1,23 +1,51 @@
 <odoo>
     <data>
-        <!-- Inherit quotation report (from module sale) -->
+        
         <template id = "report_quotation_inherit_renala" inherit_id="account.report_invoice_document">
             
-            <xpath expr = "//div[@class='row mt32 mb32']" position="attributes">
-                <attribute name="t-att-style">"font-size: 16px;"</attribute>
+            <xpath expr = "//div[@name='invoice_address']/address" position="replace">
             </xpath>
 
-            <xpath expr = "//div[@class='col-xs-2' and @t-if='o.date_invoice']" position="replace">
-                <div class="col-xs-4" t-if="o.date_invoice">
-                    <strong>Date de la facture:</strong>
-                    <span t-field="o.date_invoice"/>
+            <xpath expr = "//div[@name='invoice_address']/span[@name='according to partner_origin']" position="before">
+                <span style="margin-bottom: 0">
+                    <span t-if="o.company_id"><span t-field ="o.company_id"/><br/></span>
+                    <span t-if="o.company_id.street"><span t-field ="o.company_id.street"/><br/></span>
+                    <span t-if="o.company_id.street2"><span t-field ="o.company_id.street2"/><br/></span>
+                    <span t-if="o.company_id.city"><span t-field ="o.company_id.city"/> </span>
+                    <span t-if="o.company_id.state_id"><span t-field ="o.company_id.state_id"/> </span>
+                    <span t-if="o.company_id.zip"><span t-field ="o.company_id.zip"/><br/></span>
+                    <span t-if="o.company_id.country_id"><span t-field="o.company_id.country_id"/><br/></span>
+                </span>
+            </xpath>
+
+            <xpath expr = "//div[@name='invoice_address']/span[@name='according to partner_origin']" position="after">
+                <span t-if="o.partner_id.name"><span t-field = "o.partner_id.name"/></span>
+            </xpath>
+
+            <xpath expr = "//div[@name='invoice_address']" position="attributes">
+                <attribute name="t-att-style">"font-size: 19px; background-color: rgb(245,245,245); padding-top: 20px; padding-bottom: 20px;"</attribute>
+                <attribute name="t-att-class">"col-xs-5 col-xs-offset-7"</attribute>
+            </xpath>
+
+            <xpath expr = "//div[@class='page']/div[2]" position="replace">
+                <div class="row mt32 mb32" style="font-size: 16px">    
+                    <div class="col-xs-4" t-if="o.date_invoice">
+                        <strong>Date de la facture:</strong>
+                        <span t-field="o.date_invoice"/>
+                    </div>
+
+                    <div name="reference" class="col-xs-4" t-if="o.reference">
+                        <strong>Référence:</strong>
+                        <span t-field="o.reference"/>
+                    </div>
                 </div>
             </xpath>
 
+            
             <xpath expr = "//p[@t-if='o.payment_term_id']" position="replace">
             </xpath>
 
-            <xpath expr = "//div[@class='row mt32 mb32']" position="after">
+            <xpath expr = "//div[@t-if='len(o.tax_line_ids) &gt; 0']" position="after">
                 <p t-if="o.payment_term_id">
                     <span t-field="o.payment_term_id.note"/>
                 </p>
@@ -29,7 +57,6 @@
             <xpath expr = "//p[@t-if='o.payment_term_id']" position="after">
                 <p>Mode de paiement : <span t-field="o.company_id.payment_method"/></p>
                 <p t-if="o.comment">
-                    <!--<strong>Comment : </strong>-->
                     <span t-field="o.comment"/>
                 </p>
             </xpath>
@@ -37,9 +64,9 @@
             <xpath expr = "//p[@t-if='o.comment']" position="after">
             <p>
                 
-                <span t-if="o.partner_id.bank_ids.bank_name">
+                <span t-if="o.partner_id.bank_ids[:1].bank_name">
                     <strong>BANK : </strong>
-                    <span t-field="o.partner_id.bank_ids.bank_name"/><br/>
+                    <span t-field="o.partner_id.bank_ids[:1].bank_name"/><br/>
                 </span>
                 
                 <span t-if="'o.company_id.street' or 'o.company_id.street2' or 'o.company_id.city' or 'o.company_id.zip' or 'o.company_id.country_id'">
@@ -51,14 +78,14 @@
                     <span t-if="o.company_id.country_id"><span t-field="o.company_id.country_id"/></span><br/>
                 </span>
                 
-                <span t-if="o.partner_id.bank_ids.acc_number">
+                <span t-if="o.partner_id.bank_ids[:1].acc_number">
                     <strong>IBAN : </strong>
-                    <span t-field="o.partner_id.bank_ids.acc_number"/><br/>
+                    <span t-field="o.partner_id.bank_ids[:1].acc_number"/><br/>
                 </span>
                 
-                <span t-if="o.partner_id.bank_ids.bank_bic">
+                <span t-if="o.partner_id.bank_ids[:1].bank_bic">
                     <strong>BIC : </strong>
-                    <span t-field="o.partner_id.bank_ids.bank_bic"/><br/>
+                    <span t-field="o.partner_id.bank_ids[:1].bank_bic"/><br/>
                 </span>
 
             </p>
@@ -69,15 +96,9 @@
             </xpath>
             
             <xpath expr = "//t[@t-foreach='o._get_tax_amount_by_group()']" position="before">
-                    <!--<tr t-if="not o.invoice_line_ids.invoice_line_tax_ids">-->
-                    <t t-set="tax_exist" t-value="False"/>
-                    <t t-foreach="o.invoice_line_ids" t-as="invoice_line">
-                        <t t-if="invoice_line.invoice_line_tax_ids">
-                            <t t-set="tax_exist" t-value="True"/>    
-                        </t>
-                    </t>
-                    <tr t-if="not tax_exist">
-                        <td><span>TVA 20%</span></td>
+                
+                    <tr t-if="not o.tax_line_ids">
+                        <td><span>Taxe (TVA)</span></td>
                             
                         <td class="text-right">
                         
@@ -85,34 +106,20 @@
                     </tr>
             </xpath>
 
-            <!--<xpath expr = "//tbody[@class='invoice_tbody']/tr/td[6]/span" position="before">
-                <span t-if="not o.invoice_line_ids.invoice_line_tax_ids">TVA 20%</span>
-                <span t-if="o.invoice_line_ids.invoice_line_tax_ids">TVA 20% ,</span>
-            </xpath>
-
-            <xpath expr = "//t[@t-foreach='o._get_tax_amount_by_group()']" position="before">
+            <xpath expr = "//t[@t-foreach='o._get_tax_amount_by_group()']/tr" position="replace">
+                
                     <tr>
-                        <td><span>TVA 20%</span></td>
+                        <td>Taxe (TVA)</td>
                         <td class="text-right">
-                            <span t-esc="(o.amount_untaxed * o.tva20)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                            <span t-esc="amount_by_group[2]"/>
                         </td>
                     </tr>
             </xpath>
-
-            <xpath expr = "//span[@t-field='o.amount_total']" position="replace">
-                <span t-if="not o.invoice_line_ids.invoice_line_tax_ids">                
-                    <span t-esc="o.amount_total + (o.amount_untaxed * o.tva20)" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                </span>
-                <span t-if="o.invoice_line_ids.invoice_line_tax_ids">                
-                    <span t-field="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
-                </span>
-            </xpath>-->
-            
         </template>
-        <!-- Change the size of the company logo, company address, footer-->
+        
         <template id="report_company_logo_resize" inherit_id="report.external_layout_header">
-            <xpath expr="//div[@class='col-xs-3']//img" position="replace">
-                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="height: 100px; width: 200px"/>
+            <xpath expr="//div[@class='col-xs-3']//img" position="attributes">
+                <attribute name="t-att-style">"height: 100px; width: 200px"</attribute>
             </xpath>
             <xpath expr="//div[@name='company_address']//span" position="replace">
                 <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}" style="border-bottom: 1px solid black; display:inline-block; font-size:19px"/>
@@ -126,8 +133,8 @@
                 
                 <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
                     <span style="font-size: 6pt">
-                        <span t-if="o.company_id"><span t-field="o.company_id"/> - CAPITAL : </span>
-                        <span t-if="o.company_id.capital"><span t-field="o.company_id.capital"/> - </span>
+                        <span t-if="o.company_id"><span t-field="o.company_id"/> - </span>
+                        <span t-if="o.company_id.capital">CAPITAL :<span t-field="o.company_id.capital"/> - </span>
 
                         <span t-if="o.company_id.street"><span t-field="o.company_id.street"/>, </span>
                         <span t-if="o.company_id.street2"><span t-field="o.company_id.street2"/>, </span>
@@ -135,9 +142,9 @@
                         <span t-if="o.company_id.zip"><span t-field="o.company_id.zip"/>, </span>
                         <span t-if="o.company_id.country_id"><span t-field="o.company_id.country_id"/></span><br/>
 
-                        <span t-if = "o.partner_id.partner_origin == 'locale'">NIF : <span t-field="o.partner_id.nif"/> - </span>
-                        <span t-if = "o.partner_id.partner_origin == 'locale'">STAT : <span t-field="o.partner_id.nstat"/> - </span>
-                        <span t-if = "o.partner_id.partner_origin == 'locale'">RCS : <span t-field="o.partner_id.rcs"/></span>
+                        <span t-if = "o.partner_id.partner_origin == 'locale' and o.partner_id.nif">NIF : <span t-field="o.partner_id.nif"/> - </span>
+                        <span t-if = "o.partner_id.partner_origin == 'locale' and o.partner_id.nstat">STAT : <span t-field="o.partner_id.nstat"/> - </span>
+                        <span t-if = "o.partner_id.partner_origin == 'locale' and o.partner_id.rcs">RCS : <span t-field="o.partner_id.rcs"/></span>
                     </span>
             </xpath>
             
