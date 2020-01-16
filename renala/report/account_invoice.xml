@@ -8,13 +8,13 @@
 
             <xpath expr = "//div[@name='invoice_address']/span[@name='according to partner_origin']" position="before">
                 <span style="margin-bottom: 0">
-                    <span t-if="o.company_id"><span t-field ="o.company_id"/><br/></span>
-                    <span t-if="o.company_id.street"><span t-field ="o.company_id.street"/><br/></span>
-                    <span t-if="o.company_id.street2"><span t-field ="o.company_id.street2"/><br/></span>
-                    <span t-if="o.company_id.city"><span t-field ="o.company_id.city"/> </span>
-                    <span t-if="o.company_id.state_id"><span t-field ="o.company_id.state_id"/> </span>
-                    <span t-if="o.company_id.zip"><span t-field ="o.company_id.zip"/><br/></span>
-                    <span t-if="o.company_id.country_id"><span t-field="o.company_id.country_id"/><br/></span>
+                    <span t-if="o.company_id"><span t-field ="o.partner_id.bank_name"/><br/></span>
+                    <span t-if="o.company_id.street"><span t-field ="o.partner_id.street"/><br/></span>
+                    <span t-if="o.company_id.street2"><span t-field ="o.partner_id.street2"/><br/></span>
+                    <span t-if="o.company_id.city"><span t-field ="o.partner_id.city"/> </span>
+                    <span t-if="o.company_id.state_id"><span t-field ="o.partner_id.state_id"/> </span>
+                    <span t-if="o.company_id.zip"><span t-field ="o.partner_id.zip"/><br/></span>
+                    <span t-if="o.company_id.country_id"><span t-field="o.partner_id.country_id"/><br/></span>
                 </span>
             </xpath>
 
@@ -28,8 +28,8 @@
             </xpath>
 
             <xpath expr = "//div[@class='page']/div[2]" position="replace">
-                <div class="row mt32 mb32" style="font-size: 16px">    
-                    <div class="col-xs-4" t-if="o.date_invoice">
+                <div class="row mt32 mb32" style="font-size: 14px">    
+                    <div class="col-xs-6" t-if="o.date_invoice">
                         <strong>Date de la facture:</strong>
                         <span t-field="o.date_invoice"/>
                     </div>
@@ -146,6 +146,9 @@
                         <span t-if = "o.partner_id.partner_origin == 'locale' and o.partner_id.nstat">STAT : <span t-field="o.partner_id.nstat"/> - </span>
                         <span t-if = "o.partner_id.partner_origin == 'locale' and o.partner_id.rcs">RCS : <span t-field="o.partner_id.rcs"/></span>
                     </span>
+            </xpath>
+            <xpath expr="//ul[@name='financial_infos']" position="replace">
+                
             </xpath>
             
         </template>

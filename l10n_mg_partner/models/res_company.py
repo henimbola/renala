@@ -15,3 +15,4 @@ class ResCompany(models.Model):
     payment_method = fields.Many2one('account.journal', string = 'Mode de payement', domain = "[('type','in',['bank','cash'])]")
     account_id = fields.Many2one('account.account')
     capital = fields.Char(string = 'Capital',related = 'account_id.capital',store=True)
+    

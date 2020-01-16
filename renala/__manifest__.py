@@ -18,7 +18,6 @@
     'depends': ['base','l10n_mg_partner','account'],
 
     'data': [
-        'views/res_partner.xml',
         'report/account_invoice.xml',
     ],
 }

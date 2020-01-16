@@ -29,6 +29,11 @@
 					<field name="signature_img"/>
  				</xpath>
 
+ 				<xpath expr="//field[@name='lang']" position="after">
+			      <field name = "ntva" attrs="{'invisible':[('partner_origin','=','locale')]}"/>
+			      <field name = "siret" attrs="{'invisible':[('partner_origin','=','locale')]}"/>
+			    </xpath>
+
 			</field>
 		</record>
   	</data>

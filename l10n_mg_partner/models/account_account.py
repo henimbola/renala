@@ -8,3 +8,4 @@ class AccountAccount(models.Model):
     _inherit = 'account.account'
 
     capital = fields.Char(string='Capital')
+    
