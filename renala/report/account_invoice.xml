@@ -8,19 +8,19 @@
 
             <xpath expr = "//div[@name='invoice_address']/span[@name='according to partner_origin']" position="before">
                 <span style="margin-bottom: 0">
-                    <span t-if="o.company_id"><span t-field ="o.partner_id.bank_name"/><br/></span>
-                    <span t-if="o.company_id.street"><span t-field ="o.partner_id.street"/><br/></span>
-                    <span t-if="o.company_id.street2"><span t-field ="o.partner_id.street2"/><br/></span>
-                    <span t-if="o.company_id.city"><span t-field ="o.partner_id.city"/> </span>
-                    <span t-if="o.company_id.state_id"><span t-field ="o.partner_id.state_id"/> </span>
-                    <span t-if="o.company_id.zip"><span t-field ="o.partner_id.zip"/><br/></span>
-                    <span t-if="o.company_id.country_id"><span t-field="o.partner_id.country_id"/><br/></span>
+                    <span t-if="o.partner_id"><span t-field ="o.partner_id"/><br/></span>
+                    <span t-if="o.partner_id.street"><span t-field ="o.partner_id.street"/><br/></span>
+                    <span t-if="o.partner_id.street2"><span t-field ="o.partner_id.street2"/><br/></span>
+                    <span t-if="o.partner_id.city"><span t-field ="o.partner_id.city"/> </span>
+                    <span t-if="o.partner_id.state_id"><span t-field ="o.partner_id.state_id"/> </span>
+                    <span t-if="o.partner_id.zip"><span t-field ="o.partner_id.zip"/><br/></span>
+                    <span t-if="o.partner_id.country_id"><span t-field="o.partner_id.country_id"/><br/></span>
                 </span>
             </xpath>
 
-            <xpath expr = "//div[@name='invoice_address']/span[@name='according to partner_origin']" position="after">
+            <!--xpath expr = "//div[@name='invoice_address']/span[@name='according to partner_origin']" position="after">
                 <span t-if="o.partner_id.name"><span t-field = "o.partner_id.name"/></span>
-            </xpath>
+            </xpath-->
 
             <xpath expr = "//div[@name='invoice_address']" position="attributes">
                 <attribute name="t-att-style">"font-size: 19px; background-color: rgb(245,245,245); padding-top: 20px; padding-bottom: 20px;"</attribute>
