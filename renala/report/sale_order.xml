@@ -1,0 +1,173 @@
+<odoo>
+    <data>
+
+        <template id="report_sale_order_inherit" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@class='row']" position="replace">
+                <div class="row" id="addr">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-6">
+                        <strong>Adresse de facturation et de livraison :</strong>
+                        <br/>
+                        <span t-if="doc.partner_id">
+                            <span t-if="doc.partner_id.name">
+                                <span t-field="doc.partner_id.name"/>
+                            </span>
+                            <br/>
+                            <span t-if="doc.partner_id.contact_address">
+                                <span t-field="doc.partner_id.contact_address"/>
+                            </span>
+                            <br/>
+                            <span t-if="doc.partner_id.city">
+                                <span t-field="doc.partner_id.city"/>
+                            </span>
+                            <br/>
+                            <span t-if="doc.partner_id.country_id.name">
+                                <span t-field="doc.partner_id.country_id.name"/>
+                            </span>
+                            <br/>
+                            <span t-if="doc.partner_id.contact_person">
+                                <span class="glyphicon glyphicon-search"/>
+                                <span t-field="doc.partner_id.contact_person"/>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </xpath>
+
+            <xpath expr="//div[@id='informations']" position="replace">
+                <div class="row" id="informations_inherited">
+                    <div class="col-xs-3">
+                        <strong>Date :</strong>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Référence :</strong>
+                    </div>
+                    <div class="col-xs-3">
+                        <strong>Validité de l'offre :</strong>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+                <br/>
+                <style>
+                    div#informations_inherited {
+                    border: 1px solid black;
+                    padding: 5px;
+                    padding-bottom: 40px;
+                    }
+                </style>
+            </xpath>
+
+            <xpath expr="//p[@id='fiscal_position_remark']" position="after">
+                <div id="informations">
+                    <p name="avant bordure">
+
+                        <span t-if="doc.partner_id.bank_ids[:1].bank_name">
+                            <strong>BANK :</strong>
+                            <span t-field="doc.partner_id.bank_ids[:1].bank_name"/>
+                            <br/>
+                        </span>
+
+                        <span t-if="'doc.company_id.street' or 'doc.company_id.street2' or 'doc.company_id.city' or 'doc.company_id.zip' or 'doc.company_id.country_id'">
+                            <strong>ADRESSE :</strong>
+                            <span t-if="doc.company_id.street"><span t-field="doc.company_id.street"/>,
+                            </span>
+                            <span t-if="doc.company_id.street2"><span t-field="doc.company_id.street2"/>,
+                            </span>
+                            <span t-if="doc.company_id.city"><span t-field="doc.company_id.city"/>,
+                            </span>
+                            <span t-if="doc.company_id.zip"><span t-field="doc.company_id.zip"/>,
+                            </span>
+                            <span t-if="doc.company_id.country_id">
+                                <span t-field="doc.company_id.country_id"/>
+                            </span>
+                            <br/>
+                        </span>
+
+                        <span t-if="doc.partner_id.bank_ids[:1].acc_number">
+                            <strong>IBAN :</strong>
+                            <span t-field="doc.partner_id.bank_ids[:1].acc_number"/>
+                            <br/>
+                        </span>
+
+                        <span t-if="doc.partner_id.bank_ids[:1].bank_bic">
+                            <strong>BIC :</strong>
+                            <span t-field="doc.partner_id.bank_ids[:1].bank_bic"/>
+                            <br/>
+                        </span>
+
+                    </p>
+                </div>
+            </xpath>
+
+            <xpath expr="//div[@id='informations']" position="after">
+                <br/>
+                <div t-if="doc.state not in ['draft','sent']" id="condition_boxes">
+                    <div class="container" id="boxes">
+                        <div class="b">
+                            <div class="row">
+                                <span t-if="doc.company_id.name">
+                                    <strong>
+                                        <span t-field="doc.company_id.name"/>
+                                    </strong>
+                                </span>
+                                <br/>
+                            </div>
+                            <div id="subbox"></div>
+                        </div>
+
+                        <div class="b">
+                            <div class="row">
+                                <strong>Préparé par :</strong>
+                                <br/>
+                            </div>
+                            <div id="subbox"></div>
+                        </div>
+
+                        <div class="b">
+                            <div class="row">
+                                <strong>Contrôlé par :</strong>
+                                <br/>
+                            </div>
+                            <div id="subbox"></div>
+                        </div>
+
+                        <div class="b">
+                            <div class="row">
+                                <strong>Réception :</strong>
+                                <br/>
+                            </div>
+                            <div id="subbox"></div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+
+                <style>
+                    div.b {
+                    display: inline-block;
+                    width: 220px;
+                    height: 200px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    }
+
+                    div#boxes {
+                    text-align: center;
+                    }
+
+                    div#subbox {
+                    display: block;
+                    width: 100%;
+                    height: 200px;
+                    border: 1px solid black;
+                    }
+                </style>
+            </xpath>
+
+
+        </template>
+    </data>
+</odoo>

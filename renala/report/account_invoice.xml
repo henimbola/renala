@@ -42,8 +42,8 @@
             </xpath-->
 
             <xpath expr="//div[@name='invoice_address']" position="attributes">
-                <attribute name="t-att-style">"font-size: 19px; background-color: rgb(245,245,245); padding-top: 20px;
-                    padding-bottom: 20px;"
+                <attribute name="t-att-style">
+                    "font-size: 19px; background-color: rgb(245,245,245); padding-top: 20px; padding-bottom: 20px;"
                 </attribute>
                 <attribute name="t-att-class">"col-xs-5 col-xs-offset-7"</attribute>
             </xpath>
@@ -261,10 +261,13 @@
                     <span t-if="o.partner_id.partner_origin == 'locale' and o.partner_id.rcs">RCS :
                         <span t-field="o.partner_id.rcs"/>
                     </span>
+                    <span t-if="o.partner_id.contact_person">
+                        <strong>Client en contact : </strong>
+                        <span t-field="o.partner_id.contact_person"/>
+                    </span>
                 </span>
             </xpath>
             <xpath expr="//ul[@name='financial_infos']" position="replace">
-
             </xpath>
 
         </template>

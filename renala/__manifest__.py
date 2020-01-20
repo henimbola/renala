@@ -19,6 +19,7 @@
 
     'data': [
         'report/account_invoice.xml',
+        'report/sale_order.xml',
         'views/res_partner.xml',
     ],
 }
