@@ -15,9 +15,10 @@
 
     'version': '0.1',
 
-    'depends': ['base','l10n_mg_partner','account'],
+    'depends': ['base', 'l10n_mg_partner', 'account'],
 
     'data': [
         'report/account_invoice.xml',
+        'views/res_partner.xml',
     ],
 }

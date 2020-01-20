@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="view_partner_form_add_contact_person" model="ir.ui.view">
+            <field name="name">res.partner.form.add.contact.person</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='lang']" position="after">
+                    <field name="contact_person" string="Personne en contact"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
