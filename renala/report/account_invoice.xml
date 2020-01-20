@@ -62,7 +62,7 @@
             </xpath>
             
             <xpath expr = "//p[@t-if='o.comment']" position="after">
-            <p>
+            <p name="avant bordure">
                 
                 <span t-if="o.partner_id.bank_ids[:1].bank_name">
                     <strong>BANK : </strong>
@@ -89,6 +89,64 @@
                 </span>
 
             </p>
+            </xpath>
+            <xpath expr="//p[@name='avant bordure']" position="after">
+                <br/>
+                <div class="container" id="boxes">
+                    <div class="b">
+                        <div class="row">
+                            <span t-if="o.company_id.name">
+                                <strong>
+                                    <span t-field="o.company_id.name"/>
+                                </strong>
+                            </span>
+                            <br/>
+                        </div>
+                        <div id="subbox"></div>
+                    </div>
+
+                    <div class="b">
+                        <div class="row">
+                            <strong>Réception Client</strong>
+                            <br/>
+                        </div>
+                        <div id="subbox"></div>
+                    </div>
+
+                    <div class="b">
+                        <div class="row">
+                            <strong>Paiement</strong>
+                            <br/>
+                        </div>
+                        <div id="subbox"></div>
+                    </div>
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+
+                <style>
+                    div.b {
+                    display: inline-block;
+                    width: 220px;
+                    height: 200px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    }
+
+                    div#boxes {
+                    text-align: center;
+                    }
+
+                    div#subbox {
+                    display: block;
+                    width: 100%;
+                    height: 200px;
+                    border: 1px solid black;
+                    }
+                </style>
             </xpath>
 
             <xpath expr = "//tr[@class='border-black']/td/strong[text()='Total']" position="replace">
