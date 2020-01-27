@@ -26,33 +26,45 @@
                             </span>
                             <br/>
                             <span t-if="doc.partner_id.contact_person">
-                                <span class="glyphicon glyphicon-search"/>
+                                <span class="contact_logo">
+                                    <img class="icon" id="contact_client_icon"
+                                         src="/renala/static/icons/telephone_icon2.png"/>
+                                </span>
                                 <span t-field="doc.partner_id.contact_person"/>
                             </span>
                         </span>
                     </div>
                 </div>
+
+                <style>
+                    img.icon{
+                    width: 14px;
+                    height: 14px;
+                    }
+                </style>
             </xpath>
 
             <xpath expr="//div[@id='informations']" position="replace">
-                <div class="row" id="informations_inherited">
-                    <div class="col-xs-3">
-                        <strong>Date :</strong>
+                <div class="container" id="informations_inherited">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <strong>Date :</strong>
+                        </div>
+                        <div class="col-xs-3">
+                            <strong>Référence :</strong>
+                        </div>
+                        <div class="col-xs-3">
+                            <strong>Validité de l'offre :</strong>
+                        </div>
+                        <div class="col-xs-3"></div>
                     </div>
-                    <div class="col-xs-3">
-                        <strong>Référence :</strong>
-                    </div>
-                    <div class="col-xs-3">
-                        <strong>Validité de l'offre :</strong>
-                    </div>
-                    <div class="col-xs-3"></div>
                 </div>
                 <br/>
                 <style>
                     div#informations_inherited {
-                    border: 1px solid black;
                     padding: 5px;
-                    padding-bottom: 40px;
+                    margin-top: 25px;
+                    margin-bottom: 25px;
                     }
                 </style>
             </xpath>
@@ -106,9 +118,7 @@
                         <div class="b">
                             <div class="row">
                                 <span t-if="doc.company_id.name">
-                                    <strong>
-                                        <span t-field="doc.company_id.name"/>
-                                    </strong>
+                                    <span t-field="doc.company_id.name"/>
                                 </span>
                                 <br/>
                             </div>
@@ -148,7 +158,7 @@
                 <style>
                     div.b {
                     display: inline-block;
-                    width: 220px;
+                    width: 200px;
                     height: 200px;
                     margin-left: 5px;
                     margin-right: 5px;
@@ -166,7 +176,6 @@
                     }
                 </style>
             </xpath>
-
 
         </template>
     </data>
