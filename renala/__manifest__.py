@@ -15,10 +15,11 @@
 
     'version': '0.1',
 
-    'depends': ['base', 'l10n_mg_partner', 'account'],
+    'depends': ['base', 'l10n_mg_partner', 'account', 'stock'],
 
     'data': [
         'report/account_invoice.xml',
+        'report/stock_picking.xml',
         'report/sale_order.xml',
         'views/res_partner.xml',
     ],
