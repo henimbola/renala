@@ -46,6 +46,48 @@
                     }
                 </style>
             </xpath>
+            <xpath expr="//table[2]" position="after">
+                <br/><br/>
+                <div id="bottom_informations">
+                    <p name="avant bordure">
+                        <span t-if="o.partner_id.bank_ids[:1].bank_name">
+                            <strong>BANK :</strong>
+                            <span t-field="o.partner_id.bank_ids[:1].bank_name"/>
+                            <br/>
+                        </span>
+
+                        <span t-if="'o.company_id.street' or 'o.company_id.street2' or 'o.company_id.city' or 'o.company_id.zip' or 'o.company_id.country_id'">
+                            <strong>ADRESSE :</strong>
+                            <span t-if="o.company_id.street"><span t-field="o.company_id.street"/>,
+                            </span>
+                            <span t-if="o.company_id.street2"><span t-field="o.company_id.street2"/>,
+                            </span>
+                            <span t-if="o.company_id.city"><span t-field="o.company_id.city"/>,
+                            </span>
+                            <span t-if="o.company_id.zip"><span t-field="o.company_id.zip"/>,
+                            </span>
+                            <span t-if="o.company_id.country_id">
+                                <span t-field="o.company_id.country_id"/>
+                            </span>
+                            <br/>
+                        </span>
+
+                        <span t-if="o.partner_id.bank_ids[:1].acc_number">
+                            <strong>IBAN :</strong>
+                            <span t-field="o.partner_id.bank_ids[:1].acc_number"/>
+                            <br/>
+                        </span>
+
+                        <span t-if="o.partner_id.bank_ids[:1].bank_bic">
+                            <strong>BIC :</strong>
+                            <span t-field="o.partner_id.bank_ids[:1].bank_bic"/>
+                            <br/>
+                        </span>
+
+                    </p>
+                </div>
+            </xpath>
+
             <xpath expr="//div[@class='page']" position="inside">
                 <br/>
                 <div id="condition_boxes">

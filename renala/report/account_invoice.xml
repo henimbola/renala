@@ -74,7 +74,6 @@
                 </div>
             </xpath>
 
-
             <xpath expr="//p[@t-if='o.payment_term_id']" position="replace">
             </xpath>
 
