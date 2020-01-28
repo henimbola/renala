@@ -1,10 +1,12 @@
 <odoo>
     <data>
-
         <template id="report_sale_order_inherit" inherit_id="sale.report_saleorder_document">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/renala/static/css/style.css"/>
+            </xpath>
             <xpath expr="//div[@class='row']" position="replace">
                 <div class="row" id="addr">
-                    <div class="col-xs-6"></div>
+                    <div class="col-xs-6"/>
                     <div class="col-xs-6">
                         <strong>Adresse de facturation et de livraison :</strong>
                         <br/>
@@ -34,14 +36,13 @@
                             </span>
                         </span>
                     </div>
+                    <style>
+                        img.icon{
+                        width: 14px;
+                        height: 14px;
+                        }
+                    </style>
                 </div>
-
-                <style>
-                    img.icon{
-                    width: 14px;
-                    height: 14px;
-                    }
-                </style>
             </xpath>
 
             <xpath expr="//div[@id='informations']" position="replace">
@@ -60,19 +61,11 @@
                     </div>
                 </div>
                 <br/>
-                <style>
-                    div#informations_inherited {
-                    padding: 5px;
-                    margin-top: 25px;
-                    margin-bottom: 25px;
-                    }
-                </style>
             </xpath>
 
             <xpath expr="//p[@id='fiscal_position_remark']" position="after">
                 <div id="informations">
                     <p name="avant bordure">
-
                         <span t-if="doc.partner_id.bank_ids[:1].bank_name">
                             <strong>BANK :</strong>
                             <span t-field="doc.partner_id.bank_ids[:1].bank_name"/>
@@ -118,11 +111,13 @@
                         <div class="b">
                             <div class="row">
                                 <span t-if="doc.company_id.name">
-                                    <span t-field="doc.company_id.name"/>
+                                    <strong>
+                                        <span t-field="doc.company_id.name"/>
+                                    </strong>
                                 </span>
                                 <br/>
                             </div>
-                            <div id="subbox"></div>
+                            <div id="subbox"/>
                         </div>
 
                         <div class="b">
@@ -130,7 +125,7 @@
                                 <strong>Préparé par :</strong>
                                 <br/>
                             </div>
-                            <div id="subbox"></div>
+                            <div id="subbox"/>
                         </div>
 
                         <div class="b">
@@ -138,7 +133,7 @@
                                 <strong>Contrôlé par :</strong>
                                 <br/>
                             </div>
-                            <div id="subbox"></div>
+                            <div id="subbox"/>
                         </div>
 
                         <div class="b">
@@ -146,7 +141,7 @@
                                 <strong>Réception :</strong>
                                 <br/>
                             </div>
-                            <div id="subbox"></div>
+                            <div id="subbox"/>
                         </div>
                         <br/>
                         <br/>
@@ -155,26 +150,6 @@
                     </div>
                 </div>
 
-                <style>
-                    div.b {
-                    display: inline-block;
-                    width: 200px;
-                    height: 200px;
-                    margin-left: 5px;
-                    margin-right: 5px;
-                    }
-
-                    div#boxes {
-                    text-align: center;
-                    }
-
-                    div#subbox {
-                    display: block;
-                    width: 100%;
-                    height: 200px;
-                    border: 1px solid black;
-                    }
-                </style>
             </xpath>
 
         </template>

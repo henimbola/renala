@@ -15,7 +15,7 @@
 
     'version': '0.1',
 
-    'depends': ['base', 'l10n_mg_partner', 'account', 'stock'],
+    'depends': ['base', 'l10n_mg_partner', 'account', 'stock', 'mrp'],
 
     'data': [
         'report/account_invoice.xml',

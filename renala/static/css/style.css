@@ -1,0 +1,26 @@
+
+div.b {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+div #boxes {
+    text-align: center;
+}
+
+div #subbox {
+    display: block;
+    width: 100%;
+    height: 200px;
+    border: 1px solid black;
+}
+
+div #informations_inherited {
+    padding: 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
