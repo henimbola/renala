@@ -12,6 +12,27 @@
                 </span>
             </xpath>
             <xpath expr="//div[@name='customer_address']/div" position="inside">
+                <br/>
+                <span t-if="o.partner_id.partner_origin == 'locale'">NIF:
+                    <span t-field="o.partner_id.nif"/>
+                    <br/>
+                </span>
+                <span t-if="o.partner_id.partner_origin == 'locale'">STAT:
+                    <span t-field="o.partner_id.nstat"/>
+                    <br/>
+                </span>
+                <span t-if="o.partner_id.partner_origin == 'locale'">RCS:
+                    <span t-field="o.partner_id.rcs"/>
+                    <br/>
+                </span>
+                <span t-if="o.partner_id.partner_origin == 'etrangere'">N° TVA:
+                    <span t-field="o.partner_id.ntva"/>
+                    <br/>
+                </span>
+                <span t-if="o.partner_id.partner_origin == 'etrangere'">SIRET:
+                    <span t-field="o.partner_id.siret"/>
+                    <br/>
+                </span>
                 <span t-if="o.partner_id.contact_person">
                     <span class="contact_logo">
                         <img class="icon" id="contact_client_icon"
@@ -31,13 +52,23 @@
                     <div class="row" id="info_in">
                         <div class="col-xs-3">
                             <strong>Date :</strong>
+                            <span t-if="o.create_date">
+                                <span t-field="o.create_date"/>
+                            </span>
                         </div>
                         <div class="col-xs-3">
                             <strong>Référence :</strong>
+                            <span t-if="o.origin">
+                                <span t-field="o.origin"/>
+                            </span>
                         </div>
                         <div class="col-xs-3">
                             <strong>Validité de l'offre :</strong>
+                            <span t-if="o.min_date">
+                                <span t-field="o.min_date"/>
+                            </span>
                         </div>
+                        <div class="col-xs-3"></div>
                     </div>
                 </div>
                 <br/>
@@ -53,21 +84,21 @@
                             <br/>
                         </span>
 
-                        <span t-if="'o.company_id.street' or 'o.company_id.street2' or 'o.company_id.city' or 'o.company_id.zip' or 'o.company_id.country_id'">
-                            <strong>ADRESSE :</strong>
-                            <span t-if="o.company_id.street"><span t-field="o.company_id.street"/>,
-                            </span>
-                            <span t-if="o.company_id.street2"><span t-field="o.company_id.street2"/>,
-                            </span>
-                            <span t-if="o.company_id.city"><span t-field="o.company_id.city"/>,
-                            </span>
-                            <span t-if="o.company_id.zip"><span t-field="o.company_id.zip"/>,
-                            </span>
-                            <span t-if="o.company_id.country_id">
-                                <span t-field="o.company_id.country_id"/>
-                            </span>
-                            <br/>
-                        </span>
+                        <!--                        <span t-if="'o.company_id.street' or 'o.company_id.street2' or 'o.company_id.city' or 'o.company_id.zip' or 'o.company_id.country_id'">-->
+                        <!--                            <strong>ADRESSE :</strong>-->
+                        <!--                            <span t-if="o.company_id.street"><span t-field="o.company_id.street"/>,-->
+                        <!--                            </span>-->
+                        <!--                            <span t-if="o.company_id.street2"><span t-field="o.company_id.street2"/>,-->
+                        <!--                            </span>-->
+                        <!--                            <span t-if="o.company_id.city"><span t-field="o.company_id.city"/>,-->
+                        <!--                            </span>-->
+                        <!--                            <span t-if="o.company_id.zip"><span t-field="o.company_id.zip"/>,-->
+                        <!--                            </span>-->
+                        <!--                            <span t-if="o.company_id.country_id">-->
+                        <!--                                <span t-field="o.company_id.country_id"/>-->
+                        <!--                            </span>-->
+                        <!--                            <br/>-->
+                        <!--                        </span>-->
 
                         <span t-if="o.partner_id.bank_ids[:1].acc_number">
                             <strong>IBAN :</strong>
@@ -93,7 +124,7 @@
                             <div class="row">
                                 <span t-if="o.company_id.name">
                                     <strong>
-                                        <span t-field="o.company_id.name"/>
+                                        <span t-field="o.company_id.name" style="font_size: 10px"/>
                                     </strong>
                                 </span>
                                 <br/>

@@ -238,7 +238,7 @@
             <xpath expr="//ul[@t-if='not company.custom_footer' and @class='list-inline']" position="replace">
 
                 <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
-                <span style="font-size: 6pt">
+                <span style="font-size: 8pt">
                     <span t-if="o.company_id">
                         <span t-field="o.company_id"/>
                         -

@@ -2,7 +2,7 @@
     <data>
         <template id="report_sale_order_inherit" inherit_id="sale.report_saleorder_document">
             <xpath expr="." position="inside">
-                <link rel="stylesheet" href="/renala/static/css/style.css"/>
+                <link rel="stylesheet" href="/renala/static/css/style_report.css"/>
             </xpath>
             <xpath expr="//div[@class='row']" position="replace">
                 <div class="row" id="addr">
@@ -15,8 +15,14 @@
                                 <span t-field="doc.partner_id.name"/>
                             </span>
                             <br/>
-                            <span t-if="doc.partner_id.contact_address">
-                                <span t-field="doc.partner_id.contact_address"/>
+                            <span>
+                                <span t-if="doc.partner_id.street">
+                                    <span t-field="doc.partner_id.street"/>
+                                </span>
+                                <br/>
+                                <span t-if="doc.partner_id.street2">
+                                    <span t-field="doc.partner_id.street2"/>
+                                </span>
                             </span>
                             <br/>
                             <span t-if="doc.partner_id.city">
@@ -27,6 +33,27 @@
                                 <span t-field="doc.partner_id.country_id.name"/>
                             </span>
                             <br/>
+                            <br/>
+                            <span t-if="doc.partner_id.partner_origin == 'locale'">NIF:
+                                <span t-field="doc.partner_id.nif"/>
+                                <br/>
+                            </span>
+                            <span t-if="doc.partner_id.partner_origin == 'locale'">STAT:
+                                <span t-field="doc.partner_id.nstat"/>
+                                <br/>
+                            </span>
+                            <span t-if="doc.partner_id.partner_origin == 'locale'">RCS:
+                                <span t-field="doc.partner_id.rcs"/>
+                                <br/>
+                            </span>
+                            <span t-if="doc.partner_id.partner_origin == 'etrangere'">N° TVA:
+                                <span t-field="doc.partner_id.ntva"/>
+                                <br/>
+                            </span>
+                            <span t-if="doc.partner_id.partner_origin == 'etrangere'">SIRET:
+                                <span t-field="doc.partner_id.siret"/>
+                                <br/>
+                            </span>
                             <span t-if="doc.partner_id.contact_person">
                                 <span class="contact_logo">
                                     <img class="icon" id="contact_client_icon"
@@ -50,12 +77,23 @@
                     <div class="row">
                         <div class="col-xs-3">
                             <strong>Date :</strong>
+                            <span t-if="doc.date_order">
+                                <span t-field="doc.date_order"/>
+                            </span>
                         </div>
                         <div class="col-xs-3">
                             <strong>Référence :</strong>
+                            <span t-if="doc.client_order_ref">
+                                <span t-field="doc.client_order_ref"/>
+                            </span>
                         </div>
                         <div class="col-xs-3">
                             <strong>Validité de l'offre :</strong>
+                            <span>
+                                <span t-if="doc.validity_date">
+                                    <span t-field="doc.validity_date"/>
+                                </span>
+                            </span>
                         </div>
                         <div class="col-xs-3"></div>
                     </div>
@@ -69,22 +107,6 @@
                         <span t-if="doc.partner_id.bank_ids[:1].bank_name">
                             <strong>BANK :</strong>
                             <span t-field="doc.partner_id.bank_ids[:1].bank_name"/>
-                            <br/>
-                        </span>
-
-                        <span t-if="'doc.company_id.street' or 'doc.company_id.street2' or 'doc.company_id.city' or 'doc.company_id.zip' or 'doc.company_id.country_id'">
-                            <strong>ADRESSE :</strong>
-                            <span t-if="doc.company_id.street"><span t-field="doc.company_id.street"/>,
-                            </span>
-                            <span t-if="doc.company_id.street2"><span t-field="doc.company_id.street2"/>,
-                            </span>
-                            <span t-if="doc.company_id.city"><span t-field="doc.company_id.city"/>,
-                            </span>
-                            <span t-if="doc.company_id.zip"><span t-field="doc.company_id.zip"/>,
-                            </span>
-                            <span t-if="doc.company_id.country_id">
-                                <span t-field="doc.company_id.country_id"/>
-                            </span>
                             <br/>
                         </span>
 
