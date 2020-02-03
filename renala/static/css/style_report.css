@@ -24,3 +24,7 @@ div #informations_inherited {
     margin-bottom: 25px;
 }
 
+div[name="company_address"] {
+    color: red;
+}
+

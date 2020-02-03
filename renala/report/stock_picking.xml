@@ -2,7 +2,14 @@
     <data>
         <template id="report_delivery_slip_inherit" inherit_id="stock.report_delivery_document">
             <xpath expr="." position="inside">
-                <link rel="stylesheet" href="/renala/static/css/style.css"/>
+                <link rel="stylesheet" href="/renala/static/css/style_report.css"/>
+            </xpath>
+            <!--            <xpath expr="//div[@class='header']" position="attribute">-->
+            <!--                <attibute name="t-att-style">-->
+            <!--                    "font-size: 12px;"-->
+            <!--                </attibute>-->
+            <!--            </xpath>-->
+            <xpath expr="//div[@class='page']" position="before">
             </xpath>
             <xpath expr="//div[@name='customer_address']/div/div[1]" position="replace">
                 <span>
@@ -11,6 +18,13 @@
                     </strong>
                 </span>
             </xpath>
+            <!--            <xpath expr="//div[@name='customer_address']/div/div[1]" position="replace">-->
+            <!--                <span>-->
+            <!--                    <strong>-->
+            <!--                        Adresse de facturation et de livraison:-->
+            <!--                    </strong>-->
+            <!--                </span>-->
+            <!--            </xpath>-->
             <xpath expr="//div[@name='customer_address']/div" position="inside">
                 <br/>
                 <span t-if="o.partner_id.partner_origin == 'locale'">NIF:
@@ -124,7 +138,7 @@
                             <div class="row">
                                 <span t-if="o.company_id.name">
                                     <strong>
-                                        <span t-field="o.company_id.name" style="font_size: 10px"/>
+                                        <span t-field="o.company_id.name"/>
                                     </strong>
                                 </span>
                                 <br/>

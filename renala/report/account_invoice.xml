@@ -228,7 +228,7 @@
             <xpath expr="//div[@name='company_address']//span" position="replace">
                 <span t-field="company.partner_id"
                       t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"
-                      style="border-bottom: 1px solid black; display:inline-block; font-size:19px"/>
+                      style="border-bottom: 1px solid black; display:inline-block; font-size:16px"/>
             </xpath>
         </template>
         <template id="report_footer_resize" inherit_id="report.external_layout_footer">
