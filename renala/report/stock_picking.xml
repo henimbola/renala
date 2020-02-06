@@ -73,7 +73,7 @@
                         <div class="col-xs-3">
                             <strong>Référence :</strong>
                             <span t-if="o.origin">
-                                <span t-field="o.origin"/>
+                                <span t-field="o.sale_id.client_order_ref"/>
                             </span>
                         </div>
                         <div class="col-xs-3">
@@ -133,8 +133,8 @@
             <xpath expr="//div[@class='page']" position="inside">
                 <br/>
                 <div id="condition_boxes">
-                    <div class="container" id="boxes">
-                        <div class="b">
+                    <div class="container" style="text-align: center">
+                        <div style="display: inline-block; width: 200px; height: 200px; margin-left: 3px; margin-right: 3px;">
                             <div class="row">
                                 <span t-if="o.company_id.name">
                                     <strong>
@@ -143,31 +143,33 @@
                                 </span>
                                 <br/>
                             </div>
-                            <div id="subbox"/>
+                            <div style="display: block; width: 100%; height: 200px; border: 1px solid black;"/>
                         </div>
 
-                        <div class="b">
+
+                        <div style="display: inline-block; width: 200px; height: 200px; margin-left: 3px; margin-right: 3px;">
                             <div class="row">
                                 <strong>Préparé par :</strong>
                                 <br/>
                             </div>
-                            <div id="subbox"/>
+                            <div style="display: block; width: 100%; height: 200px; border: 1px solid black;"/>
                         </div>
 
-                        <div class="b">
+
+                        <div style="display: inline-block; width: 200px; height: 200px; margin-left: 3px; margin-right: 3px;">
                             <div class="row">
                                 <strong>Contrôlé par :</strong>
                                 <br/>
                             </div>
-                            <div id="subbox"/>
+                            <div style="display: block; width: 100%; height: 200px; border: 1px solid black;"/>
                         </div>
 
-                        <div class="b">
+                        <div style="display: inline-block; width: 200px; height: 200px; margin-left: 3px; margin-right: 3px;">
                             <div class="row">
                                 <strong>Réception :</strong>
                                 <br/>
                             </div>
-                            <div id="subbox"/>
+                            <div style="display: block; width: 100%; height: 200px; border: 1px solid black;"/>
                         </div>
                         <br/>
                         <br/>

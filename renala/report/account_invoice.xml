@@ -36,6 +36,10 @@
                         <span t-field="o.partner_id.country_id"/>
                         <br/>
                     </span>
+                    <span t-if="o.partner_id.phone">
+                        <span t-field="o.partner_id.phone"/>
+                        <br/>
+                    </span>
                     <br/>
                 </span>
             </xpath>
@@ -104,21 +108,21 @@
                         <br/>
                     </span>
 
-                    <span t-if="'o.company_id.street' or 'o.company_id.street2' or 'o.company_id.city' or 'o.company_id.zip' or 'o.company_id.country_id'">
-                        <strong>ADRESSE :</strong>
-                        <span t-if="o.company_id.street"><span t-field="o.company_id.street"/>,
-                        </span>
-                        <span t-if="o.company_id.street2"><span t-field="o.company_id.street2"/>,
-                        </span>
-                        <span t-if="o.company_id.city"><span t-field="o.company_id.city"/>,
-                        </span>
-                        <span t-if="o.company_id.zip"><span t-field="o.company_id.zip"/>,
-                        </span>
-                        <span t-if="o.company_id.country_id">
-                            <span t-field="o.company_id.country_id"/>
-                        </span>
-                        <br/>
-                    </span>
+<!--                    <span t-if="'o.company_id.street' or 'o.company_id.street2' or 'o.company_id.city' or 'o.company_id.zip' or 'o.company_id.country_id'">-->
+<!--                        <strong>ADRESSE :</strong>-->
+<!--                        <span t-if="o.company_id.street"><span t-field="o.company_id.street"/>,-->
+<!--                        </span>-->
+<!--                        <span t-if="o.company_id.street2"><span t-field="o.company_id.street2"/>,-->
+<!--                        </span>-->
+<!--                        <span t-if="o.company_id.city"><span t-field="o.company_id.city"/>,-->
+<!--                        </span>-->
+<!--                        <span t-if="o.company_id.zip"><span t-field="o.company_id.zip"/>,-->
+<!--                        </span>-->
+<!--                        <span t-if="o.company_id.country_id">-->
+<!--                            <span t-field="o.company_id.country_id"/>-->
+<!--                        </span>-->
+<!--                        <br/>-->
+<!--                    </span>-->
 
                     <span t-if="o.partner_id.bank_ids[:1].acc_number">
                         <strong>IBAN :</strong>
@@ -233,7 +237,7 @@
         </template>
         <template id="report_footer_resize" inherit_id="report.external_layout_footer">
             <xpath expr="//t[@t-if='company.custom_footer']" position="attributes">
-                <attribute name="t-att-style">"font-size: 6pt;"</attribute>
+                <attribute name="t-att-style">"font-size: 9pt;"</attribute>
             </xpath>
             <xpath expr="//ul[@t-if='not company.custom_footer' and @class='list-inline']" position="replace">
 
